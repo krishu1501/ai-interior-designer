@@ -1,8 +1,39 @@
-# Room Redesign Assistant
+# 🛋️ Room Redesign Assistant  
+**An AI-powered tool to visualize and shop your dream room.**
 
-A full-stack application that helps users redesign their rooms by suggesting new furniture or decor items based on a theme. The app uses Google Gemini's image generation model to visualize the redesigned room and fetches product details from Amazon for easy purchase.
+## 🚀 Overview  
+Room Redesign Assistant is a full-stack AI application that simplifies interior design by helping users **visualize a redesigned version of their room** and directly **purchase suggested items from Amazon**.
 
-It leverages Google Gemini's image generation model to help users visualize and redesign their rooms. Users can upload a room's image and specify a theme (e.g., modern, vintage, relaxed). The app suggests new furniture or decor items, fetches their details from Amazon, and generates a new room image incorporating the changes. This innovative tool simplifies interior design and shopping, making it accessible and user-friendly.
+## 🛠️ How It Works  
+1. **Upload Your Room Image**  
+   Users begin by uploading a photo of their existing room.
+
+2. **Choose a Design Theme**  
+   Options include styles like *modern*, *vintage*, *relaxed*, and more.
+
+3. **AI-Powered Redesign**  
+   Using Google Gemini's image generation model, the app:
+   - Identifies the existing layout.
+   - Suggests decor and furniture tailored to the chosen theme.
+   - Generates a new image showing the transformed room.
+
+4. **View Final Product in Your Room**  
+   Users can see what the suggested redesign would look like in their actual room environment — creating a realistic visual before making any changes.
+
+5. **Shop the Look**  
+   The app fetches real product listings from Amazon, allowing users to:
+   - View item details and pricing.
+   - Click through and purchase directly from Amazon.
+
+## 💡 Key Features  
+- ✨ AI-generated room redesigns based on user preferences  
+- 🖼️ Realistic image previews of the redesigned space  
+- 🛍️ One-click access to purchase suggested items via Amazon  
+- 🧠 Powered by Google Gemini for advanced image generation and reasoning
+
+## 🌟 Why It Stands Out  
+Room Redesign Assistant bridges the gap between *imagination* and *execution*, combining AI creativity with real-world shopping. Whether you're planning a makeover or just browsing ideas, it turns inspiration into action in a few simple steps.
+
 
 ## Prerequisites
 
@@ -83,8 +114,9 @@ The frontend will run on http://localhost:3000
 
 ## Results
 
-###
-[Theme: Vintage](screenshots/vintage.jpg)
+### Theme: Calm  
+![Theme: Calm](screenshots/calm.jpg)
 
-###
-[Theme: Calm](screenshots/calm.jpg)
+### Theme: Vintage  
+![Theme: Vintage](screenshots/vintage.jpg)
+
