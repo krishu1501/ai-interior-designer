@@ -1,6 +1,8 @@
-# Amazon Product Scraper
+# Room Redesign Assistant
 
-A full-stack application that scrapes Amazon product search results using Python and displays them in a React frontend.
+A full-stack application that helps users redesign their rooms by suggesting new furniture or decor items based on a theme. The app uses Google Gemini's image generation model to visualize the redesigned room and fetches product details from Amazon for easy purchase.
+
+It leverages Google Gemini's image generation model to help users visualize and redesign their rooms. Users can upload a room's image and specify a theme (e.g., modern, vintage, relaxed). The app suggests new furniture or decor items, fetches their details from Amazon, and generates a new room image incorporating the changes. This innovative tool simplifies interior design and shopping, making it accessible and user-friendly.
 
 ## Prerequisites
 
@@ -8,6 +10,8 @@ A full-stack application that scrapes Amazon product search results using Python
 - Node.js 16.x or higher (recommended 16.x LTS)
   - To check your Node.js version: `node --version`
   - Download Node.js from: https://nodejs.org/
+- Set the environment variable `GEMINI_API_KEY` with your Google Gemini API key.
+  - Instructions for obtaining the API key can be found at: https://ai.google.dev/gemini-api/docs/api-key
 
 ## Setup and Running
 
@@ -39,7 +43,17 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-4. Run the backend server:
+4. Set the `GEMINI_API_KEY` environment variable:
+   - On Windows:
+```bash
+set GEMINI_API_KEY=your_api_key_here
+```
+   - On Unix or MacOS:
+```bash
+export GEMINI_API_KEY=your_api_key_here
+```
+
+5. Run the backend server:
 ```bash
 python main.py
 ```
@@ -61,30 +75,16 @@ The frontend will run on http://localhost:3000
 
 ## Usage
 
-1. Open http://localhost:3000 in your browser
-2. Enter a search term and maximum number of results
-3. Click Search to see the results
-4. Click on product cards to view them on Amazon
+1. Open http://localhost:3000 in your browser.
+2. Upload an image of your room.
+3. Optionally, enter a theme (e.g., relaxed, vintage, calm, modern, gadget freak).
+4. Click Submit to see the redesigned room image alongside the original.
+5. View the list of suggested items with their details and clickable Amazon links.
 
-## Troubleshooting
+## Results
 
-### ModuleNotFoundError: No module named 'fastapi'
-This error occurs when packages are not installed correctly. Try these steps:
-1. Make sure you're in the backend directory
-2. Ensure your virtual environment is activated (you should see (venv) in your terminal)
-3. Run:
-```bash
-pip uninstall fastapi
-pip install fastapi
-pip install -r requirements.txt
-```
+###
+[Theme: Vintage](screenshots/vintage.jpg)
 
-If the error persists, try creating a new virtual environment:
-```bash
-deactivate  # if venv is active
-rm -rf venv  # on Unix/MacOS
-# OR
-rmdir /s /q venv  # on Windows
-python -m venv venv
-# Then follow activation and installation steps above
-```
+###
+[Theme: Calm](screenshots/calm.jpg)
