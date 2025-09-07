@@ -11,7 +11,7 @@ class GeminiService:
 
     async def get_product_suggestions(self, image: Image, theme: str) -> List[ProductSuggestion]:
         prompt = f'''You are an interior designer. I want to buy new items for my room to add or replace products 
-        or furniture. Suggest item names to be bought. If the new item is replacing one of the current items form 
+        or furniture. Suggest item names to be bought. Limit item name to 3 words. If the new item is replacing one of the current items form 
         the room, it should also have name of current object that needs to be replaced from the image of room. 
         The goal is to have the room look based on the theme {theme}'''
 
