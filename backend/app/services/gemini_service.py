@@ -23,9 +23,9 @@ class GeminiService:
                 "response_schema": list[ProductSuggestionResponse],
             }
         )
-        
+        productSuggestions: list[ProductSuggestionResponse] = response.parsed
         # return [ProductSuggestion(**item) for item in response.parsed]
-        return self.map_suggestions(response.parsed)
+        return await self.map_suggestions(productSuggestions)
 
     async def generate_room_image(self, image: Image, suggestions: List[ProductSuggestion]) -> str:
         prompt = f"Using the room image, create a photorealistic view replacing or adding these items: {str(suggestions)}"
@@ -41,7 +41,7 @@ class GeminiService:
         
         raise ValueError("No image generated in response")
     
-    async def map_suggestions(response_parsed: List[ProductSuggestionResponse]) -> List[ProductSuggestion]:
+    async def map_suggestions(self, response_parsed: List[ProductSuggestionResponse]) -> List[ProductSuggestion]:
         """
         Maps a list of ProductSuggestionResponse objects to a list of ProductSuggestion objects.
         """
