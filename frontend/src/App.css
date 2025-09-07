@@ -69,3 +69,58 @@ button {
   text-decoration: none;
   border-radius: 4px;
 }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.design-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.file-input {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+.preview-image {
+  max-width: 300px;
+  margin-top: 10px;
+}
+
+.theme-input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.images-container {
+  display: flex;
+  gap: 20px;
+  margin: 30px 0;
+  justify-content: center;
+}
+
+.image-box {
+  flex: 1;
+  max-width: 500px;
+}
+
+.image-box img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.replace-text {
+  color: #666;
+  font-style: italic;
+}

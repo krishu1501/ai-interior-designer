@@ -3,19 +3,28 @@ import axios from 'axios';
 import './App.css';
 
 function App() {
-  const [query, setQuery] = useState('');
-  const [maxResults, setMaxResults] = useState(10);
-  const [products, setProducts] = useState([]);
+  const [image, setImage] = useState(null);
+  const [theme, setTheme] = useState('');
   const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState(null);
 
-  const handleSearch = async (e) => {
+  const themes = ['relaxed', 'vintage', 'calm', 'modern', 'gadget freak'];
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    const formData = new FormData();
+    formData.append('image', image);
+    formData.append('theme', theme || 'modern');
+
     try {
-      const response = await axios.get(`http://localhost:8000/api/search/${query}/${maxResults}`);
-      setProducts(response.data);
+      const response = await axios.post('http://localhost:8000/api/design-room', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+      setResult(response.data);
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.error('Error:', error);
     }
     setLoading(false);
   };
@@ -23,40 +32,90 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Amazon Product Scraper</h1>
-        <form onSubmit={handleSearch}>
+        <h1>Room Designer AI</h1>
+      </header>
+      
+      <main className="container">
+        <form onSubmit={handleSubmit} className="design-form">
+          <div className="file-input">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setImage(e.target.files[0])}
+              required
+            />
+            {image && (
+              <img 
+                src={URL.createObjectURL(image)} 
+                alt="Room preview" 
+                className="preview-image"
+              />
+            )}
+          </div>
+          
           <input
             type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Enter search term"
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+            placeholder="Choose a theme (e.g., modern, vintage)"
+            list="themes"
+            className="theme-input"
           />
-          <input
-            type="number"
-            value={maxResults}
-            onChange={(e) => setMaxResults(e.target.value)}
-            placeholder="Max results"
-            min="1"
-            max="50"
-          />
-          <button type="submit">Search</button>
+          <datalist id="themes">
+            {themes.map(t => <option key={t} value={t} />)}
+          </datalist>
+          
+          <button type="submit" disabled={loading}>
+            {loading ? 'Processing...' : 'Design Room'}
+          </button>
         </form>
-      </header>
-      <main>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <div className="products-grid">
-            {products.map((product, index) => (
-              <div key={index} className="product-card">
-                <img src={product.image} alt={product.title} />
-                <h3>{product.title}</h3>
-                <p className="price">{product.price}</p>
-                <a href={product.url} target="_blank" rel="noopener noreferrer">
-                  View on Amazon
-                </a>
+
+        {result && (
+          <div className="results">
+            <div className="images-container">
+              {image && (
+                <div className="image-box">
+                  <h3>Original Room</h3>
+                  <img src={URL.createObjectURL(image)} alt="Original room" />
+                </div>
+              )}
+              <div className="image-box">
+                <h3>Redesigned Room</h3>
+                <img 
+                  src={`data:image/jpeg;base64,${result.newImage}`}
+                  alt="Redesigned room"
+                />
               </div>
-            ))}
+            </div>
+
+            <div className="suggestions">
+              <h2>Suggested Changes</h2>
+              <div className="products-grid">
+                {result.suggestions.map((item, index) => (
+                  <div key={index} className="product-card">
+                    {item.amazonDetails && (
+                      <>
+                        <img src={item.amazonDetails.image} alt={item.newProduct} />
+                        <h3>{item.newProduct}</h3>
+                        {item.oldProduct && (
+                          <p className="replace-text">
+                            Replaces: {item.oldProduct}
+                          </p>
+                        )}
+                        <p className="price">{item.amazonDetails.price}</p>
+                        <a 
+                          href={item.amazonDetails.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                        >
+                          View on Amazon
+                        </a>
+                      </>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         )}
       </main>

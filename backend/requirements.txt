@@ -1,7 +1,11 @@
-fastapi==0.103.1
+fastapi==0.116.0
 uvicorn==0.23.2
 requests==2.31.0
 beautifulsoup4==4.12.2
 python-dotenv==1.0.0
-pydantic==1.10.12
+pydantic==2.10.6
 cors==0.9.4
+google-genai==1.33.0
+pillow==10.2.0
+python-multipart==0.0.9
+pydantic-settings
