@@ -34,6 +34,17 @@ Room Redesign Assistant is a full-stack AI application that simplifies interior 
 ## 🌟 Why It Stands Out  
 Room Redesign Assistant bridges the gap between *imagination* and *execution*, combining AI creativity with real-world shopping. Whether you're planning a makeover or just browsing ideas, it turns inspiration into action in a few simple steps.
 
+## Results
+
+### Theme: Modern  
+![Theme: Modern](screenshots/modern.jpg)
+
+### Theme: Calm  
+![Theme: Calm](screenshots/calm.jpg)
+
+### Theme: Vintage  
+![Theme: Vintage](screenshots/vintage.jpg)
+
 
 ## Prerequisites
 
@@ -112,14 +123,4 @@ The frontend will run on http://localhost:3000
 4. Click Submit to see the redesigned room image alongside the original.
 5. View the list of suggested items with their details and clickable Amazon links.
 
-## Results
-
-### Theme: Modern  
-![Theme: Modern](screenshots/modern.jpg)
-
-### Theme: Calm  
-![Theme: Calm](screenshots/calm.jpg)
-
-### Theme: Vintage  
-![Theme: Vintage](screenshots/vintage.jpg)
 
