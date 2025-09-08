@@ -114,6 +114,9 @@ The frontend will run on http://localhost:3000
 
 ## Results
 
+### Theme: Modern  
+![Theme: Modern](screenshots/modern.jpg)
+
 ### Theme: Calm  
 ![Theme: Calm](screenshots/calm.jpg)
 
